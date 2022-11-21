@@ -1,6 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+import FilmsList from './components/filmsList';
 
 
 export default class App extends React.Component {
@@ -17,7 +17,7 @@ this.onSubmit = this.onSubmit.bind(this)
 
 onSubmit(event){
   event.preventDefault();
-  this.setState({list: [...this.state.list, this.state.text]})
+  this.setState({list: [...this.state.list, this.state.text]});
 }
 
   
@@ -35,7 +35,10 @@ onSubmit(event){
           return <li key= {item + index}>{item}</li>
           })}
           </ul>
+          <FilmsList/>
       </div>
     );
   }
 }
+
+
