@@ -1,37 +1,30 @@
-import './App.css';
-import React from 'react';
+import {useState} from 'react';
 import FilmsList from './components/filmsList';
 
 
-export default class App extends React.Component {
-  constructor(props){
-    super(props)
+export default function App(props) {
 
-    this.state = {
-      list: ["ready", "set", "go"],
-      text: "",
-    }
-this.onSubmit = this.onSubmit.bind(this)
+const [list, setList] = useState(["ready", "set", "go"]);
+const [text, setText] = useState([""]);
 
-}
 
-onSubmit(event){
+function onSubmit(event){
   event.preventDefault();
-  this.setState({list: [...this.state.list, this.state.text]});
+  setList([...list, text]);
 }
 
   
-  render () {
     return (
       <div>
         <h1>Hello World</h1>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={onSubmit}>
         <label>Enter text</label>
-        <input value={this.state.text} onChange={(event)=> this.setState({text: event.target.value})} ></input>
+        <input value={text} onChange={(event)=> 
+        setText(event.target.value)} ></input>
         <button type="submit">Add</button>
         </form>
         <ul>
-          {this.state.list.map((item , index) => {
+          {list.map((item , index) => {
           return <li key= {item + index}>{item}</li>
           })}
           </ul>
@@ -39,6 +32,6 @@ onSubmit(event){
       </div>
     );
   }
-}
+
 
 
